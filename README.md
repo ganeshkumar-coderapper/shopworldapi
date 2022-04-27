@@ -34,7 +34,6 @@ POST /order/cancel
 
 ### update order quantity
 - updates first line item quantity by 3 using the order_id
-- 
 
 ```
 POST /order/updateqty

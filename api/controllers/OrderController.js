@@ -26,7 +26,7 @@ module.exports = {
     if (_.get(req, 'body.order_id')) {
       try {
         let orderId = req.body.order_id;
-        axios.post(`https://shopworld-dev.myshopify.com//admin/api/2022-04/orders/${orderId}/cancel.json`, {}, {
+        axios.post(`${sails.config.custom.shopify_url}/admin/api/2022-04/orders/${orderId}/cancel.json`, {}, {
           headers: { 'X-Shopify-Access-Token': sails.config.custom.shopify_access_token }
         })
         .then(function (response) {
@@ -44,4 +44,3 @@ module.exports = {
   }, 
 
 };
-
