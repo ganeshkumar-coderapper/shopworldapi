@@ -39,7 +39,14 @@ module.exports = {
         let prId = req.body.id.toString();
         let prCount = await Product.count({ id: prId });
         if (prCount <= 0) {
-          return res.json({ status: false, msg: `Product with requested id ${prId} not found` });
+          let prCr = await Product.create(
+            {
+              id: prId,
+              title: req.body.title,
+              data: req.body
+            }
+          ).fetch();
+          return res.json({ status: true, msg: `Successfully created product with id ${prCr.id} as it doesnt exist` });
         } else {
           let prUp = await Product.updateOne({ id: prId }).set(
             {
@@ -47,7 +54,6 @@ module.exports = {
               data: req.body
             }
           );
-
           return res.json({ status: true, msg: `Successfully updated product` });
         }
       } catch (err) {

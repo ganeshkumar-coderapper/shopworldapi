@@ -11,4 +11,6 @@
 module.exports.routes = {
   'POST /products/create': { controller: 'Products', action: 'create' },
   'POST /products/update': { controller: 'Products', action: 'update' },
+  'POST /order/updateqty': { controller: 'Order', action: 'updateqty' },
+  'POST /order/cancel': { controller: 'Order', action: 'cancel' },
 };
